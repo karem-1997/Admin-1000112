@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulala Chat - سياسة البرنامج الرسمي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #d4a853;
+  --gold-light: #e8c87a;
+  --gold-dark: #b8923e;
+  --bg-dark: #0d0d0f;
+  --bg-card: #16161a;
+  --bg-card-2: #1c1c22;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a8;
+  --text-gold: #d4a853;
+  --border: #2a2a30;
+  --accent: #c9a84c;
+  --gradient-gold: linear-gradient(135deg, #d4a853 0%, #e8c87a 50%, #b8923e 100%);
+  --gradient-dark: linear-gradient(180deg, #16161a 0%, #0d0d0f 100%);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(212,168,83,0.2); }
+  50% { box-shadow: 0 0 40px rgba(212,168,83,0.4); }
+}
+.animate-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  background: radial-gradient(ellipse at center, rgba(212,168,83,0.05) 0%, transparent 70%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a853' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 28px;
+  background: var(--gradient-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  animation: float 3s ease-in-out infinite, glow 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+  font-size: 60px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212,168,83,0.1);
+  border: 1px solid rgba(212,168,83,0.3);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge::before { content: '◆'; font-size: 10px; }
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 .highlight {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .subtitle {
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+.stat-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.stat-item:hover {
+  border-color: var(--gold-dark);
+  transform: translateY(-4px);
+}
+.stat-item .num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--gold);
+  display: block;
+}
+.stat-item .label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  animation: fadeInUp 1s ease 1s both;
+  cursor: pointer;
+  z-index: 1;
+}
+.scroll-down svg {
+  width: 24px;
+  height: 24px;
+  animation: float 2s ease-in-out infinite;
+}
+.section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-title {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--gold-light);
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  opacity: 0.5;
+}
+.card:hover {
+  border-color: rgba(212,168,83,0.3);
+  transform: translateY(-2px);
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.feature-card {
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  border-color: var(--gold-dark);
+  background: rgba(212,168,83,0.03);
+}
+.feature-num {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: var(--gradient-gold);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #000;
+}
+.feature-text h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+.feature-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.info-box {
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+.info-box h4 {
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.info-box p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.download-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+.download-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--gradient-gold);
+  color: #000;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212,168,83,0.3);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold-dark);
+}
+.btn-outline:hover {
+  background: rgba(212,168,83,0.1);
+  transform: translateY(-2px);
+}
+.policy-index {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+}
+.policy-index h3 {
+  text-align: center;
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+.policy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.policy-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-card-2);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.policy-item:hover {
+  border-color: var(--gold-dark);
+  background: rgba(212,168,83,0.05);
+}
+.policy-item .p-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: var(--gradient-gold);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #000;
+}
+.policy-item span:last-child {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.policy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.policy-header h2 {
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.policy-header .icon {
+  width: 44px;
+  height: 44px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+.policy-header .badge-num {
+  background: var(--gradient-gold);
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 600px;
+}
+thead {
+  background: var(--bg-card-2);
+}
+th {
+  padding: 14px 12px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--gold-dark);
+  white-space: nowrap;
+}
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+tbody tr:hover {
+  background: rgba(212,168,83,0.03);
+}
+tbody tr:last-child td { border-bottom: none; }
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.75rem;
+}
+.rank-b { background: #8B7355; color: #fff; }
+.rank-a { background: #6B8E9F; color: #fff; }
+.rank-s { background: #4A7C59; color: #fff; }
+.rank-ss { background: #7B5B8C; color: #fff; }
+.notes {
+  margin-top: 20px;
+}
+.note-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-card-2);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border-right: 3px solid var(--gold-dark);
+}
+.note-item .note-num {
+  color: var(--gold);
+  font-weight: 800;
+  min-width: 24px;
+}
+.note-item p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.gold-banner {
+  background: linear-gradient(135deg, rgba(212,168,83,0.15), rgba(184,146,62,0.1));
+  border: 1px solid rgba(212,168,83,0.3);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--gold-light);
+}
+.gold-banner::before { content: '✦'; color: var(--gold); }
+.app-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.app-info-card {
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+.app-info-card h4 {
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.app-info-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.footer {
+  text-align: center;
+  padding: 60px 20px 40px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: var(--gradient-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 40px;
+}
+.footer h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+.footer p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.footer-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.back-to-top:hover {
+  border-color: var(--gold);
+  background: rgba(212,168,83,0.1);
+}
+@media (max-width: 768px) {
+  .section { padding: 40px 16px; }
+  .card { padding: 24px 16px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .policy-header { flex-direction: column; align-items: flex-start; }
+  .download-btns { flex-direction: column; width: 100%; }
+  .btn { width: 100%; justify-content: center; }
+  table { font-size: 0.8rem; }
+  th, td { padding: 10px 8px; }
+}
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+  margin: 40px auto;
+  max-width: 200px;
+  opacity: 0.5;
+}
+.tag {
+  display: inline-block;
+  background: rgba(212,168,83,0.1);
+  border: 1px solid rgba(212,168,83,0.3);
+  color: var(--gold);
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.sub-title {
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin: 24px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="top">
+  <div style="position:absolute; top:20px; right:20px; z-index:10; text-align:right;">
+    <div style="background:rgba(212,168,83,0.15); border:1px solid rgba(212,168,83,0.4); border-radius:12px; padding:10px 18px; margin-bottom:8px;">
+      <span style="color:var(--gold); font-weight:700; font-size:0.95rem;">سوبر ادمن رسمي</span>
+      <span style="color:var(--gold-light); font-weight:800; font-size:1.1rem; margin-right:8px;">1000112</span>
+    </div>
+    <div style="background:rgba(212,168,83,0.1); border:1px solid rgba(212,168,83,0.25); border-radius:12px; padding:8px 18px;">
+      <span style="color:var(--text-secondary); font-weight:600; font-size:0.9rem;">شرح سياسة التطبيق</span>
+    </div>
+  </div>
+  <div class="hero-logo animate-in">🐯</div>
+  <div class="hero-badge animate-in" style="animation-delay:0.1s">برنامج الدعم الرسمي</div>
+  <h1 class="animate-in" style="animation-delay:0.2s">
+    <span class="highlight">دعم فاخر · تعزيز بأقصى قوة</span><br>
+    <span style="font-size:0.6em; color:var(--text-secondary); font-weight:400;">اصعد المايك — المسرح لك</span>
+  </h1>
+  <p class="subtitle animate-in" style="animation-delay:0.3s">
+    رواتب مضيفين مرتفعة، عمولات وكالات، هدايا افتتاح ضخمة، استرداد شحن حتى 36%، مزايا أول شحن، تقاسم إيرادات أسبوعي ومهام ماس — وليمة ثروة لنجوم الصوت بانتظارك.
+  </p>
+  <div class="stats-bar animate-in" style="animation-delay:0.4s">
+    <div class="stat-item"><span class="num">كل اثنين</span><span class="label">يوم صرف الوكالة</span></div>
+    <div class="stat-item"><span class="num">VIP5×15</span><span class="label">أعلى مكافأة افتتاح</span></div>
+    <div class="stat-item"><span class="num">36%</span><span class="label">أعلى استرداد شحن</span></div>
+    <div class="stat-item"><span class="num">12</span><span class="label">مستويات راتب المضيف</span></div>
+  </div>
+  <div class="scroll-down" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+    <span>اكتشف المزيد</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="card animate-in">
+    <h2 class="section-title">صوتك يستحق أن يُسمع في كل الشرق الأوسط</h2>
+    <div class="divider"></div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <div class="feature-text"><h3>وكالة جديدة؟ هدايا افتتاح + VIP</h3><p>تملأ غرفتك حرارةً بين ليلة وضحاها</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <div class="feature-text"><h3>استرداد شحن حتى 36%</h3><p>كل ريال وقود لصواريخ نموك</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <div class="feature-text"><h3>تقاسم إيرادات أسبوعي مجنون</h3><p>كلما اشتعلت الغرفة، كبر ربحك</p></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">04</div>
+        <div class="feature-text"><h3>مهام ماس يومية</h3><p>جهدك واضح، مكافآتك فورية</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card animate-in">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px;">
+      <h2 class="section-title" style="margin:0; text-align:right;">مسرحك الصوتي في الشرق الأوسط · Bulala Chat</h2>
+      <span class="tag">تطبيق دردشة صوتية</span>
+    </div>
+    <div class="divider"></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px; font-size:0.95rem;"><strong style="color:var(--gold);">هنا، «مرحباً» قد تفتح مليون متابع؛ أغنية قد تضيء الخليج بأكمله.</strong></p>
+    <p style="color:var(--text-secondary); margin-bottom:16px; font-size:0.95rem;">Bulala Chat منصة ترفيه اجتماعي صوتي موجهة لأسواق الشرق الأوسط. ادخل غرف الصوت في أي وقت—تعرّف على أصدقاء جدد، تحدث بحرية، أو اصعد المايك لتشارك الغناء والقصص والمواهب وتجعل كل اتصال أكثر حيوية.</p>
+    <p style="color:var(--text-secondary); margin-bottom:16px; font-size:0.95rem;">يحصل المضيفون وفرق الوكالات على مسار نمو واضح: إيرادات الغرف، هدايا الداعمين، عمولات الوكالات ومهام المنصة تتراكم معاً—مع مستويات VIP والأرقام المميزة—لتساعدك على تحقيق دخل مستمر في اقتصاد الصوت.</p>
+    <p style="color:var(--text-secondary); margin-bottom:24px; font-size:0.95rem;">سواء كنت مستخدماً للتواصل أو قائد وكالة محترف، يوفر Bulala Chat خدمة مستقرة وصوتاً منخفض التأخير وعمليات محلية لمجتمع آمن ونابض ومستدام.</p>
+    <h3 style="color:var(--gold); margin-bottom:16px;">انضم الآن — النجم الصوتي التالي قد تكون أنت.</h3>
+    <div class="app-info">
+      <div class="app-info-card"><h4>🎤 غرف صوت مباشرة</h4><p>دردشة صوتية متعددة، مايك مفتوح، تأخير منخفض وصوت واضح للحديث والغناء والألعاب.</p></div>
+      <div class="app-info-card"><h4>💎 نمو المضيف والوكالة</h4><p>مستويات الرواتب، حفلات الافتتاح، الإيرادات الأسبوعية ومهام الماس—مكافآت تنمو مع فريقك.</p></div>
+      <div class="app-info-card"><h4>🎁 الهدايا والداعمون</h4><p>هدايا افتراضية، مزايا أول شحن وترتيب أسبوعي لرفع حرارة الغرفة والدخل.</p></div>
+      <div class="app-info-card"><h4>🌍 محلي لمنطقة الشرق الأوسط</h4><p>واجهة عربية وعمليات إقليمية وقواعد مناطق زمنية تناسب الخليج وشمال أفريقيا.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="download-section animate-in">
+  <div class="card" style="max-width:700px; margin:0 auto;">
+    <h2 class="section-title">التنزيل من المتاجر الرسمية</h2>
+    <p style="color:var(--text-secondary); margin-bottom:8px;">متاح على Android وiPhone—ابحث عن «Bulala Chat» في Google Play أو App Store، أو اضغط الأزرار أدناه للانتقال مباشرة إلى صفحة التطبيق الرسمية.</p>
+    <p style="color:var(--gold); margin-bottom:20px; font-size:0.95rem;">لا تدع الفرصة خارج الشاشة — حمّل في ثانية وافتح البث.</p>
+    <div class="download-btns">
+      <a href="#" class="btn btn-outline">📱 iPhone · App Store</a>
+      <a href="#" class="btn btn-outline">🤖 Android · Google Play</a>
+    </div>
+    <div class="download-btns" style="margin-top:12px;">
+      <a href="#" class="btn btn-primary">التنزيل من App Store</a>
+      <a href="#" class="btn btn-primary">احصل عليه من Google Play</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="gold-banner animate-in" style="text-align:center; justify-content:center;">المكافآت الضخمة جاهزة · التفاصيل بالأسفل، تحرّك الآن</div>
+</section>
+
+<section class="section" id="policies">
+  <div class="policy-index animate-in">
+    <h3>فهرس المحتويات</h3>
+    <div class="policy-list">
+      <a href="#policy-01" class="policy-item"><span class="p-num">01</span><span>سياسة المضيفين</span></a>
+      <a href="#policy-02" class="policy-item"><span class="p-num">02</span><span>سياسة قائد الوكالة</span></a>
+      <a href="#policy-03" class="policy-item"><span class="p-num">03</span><span>حفل افتتاح الوكالة</span></a>
+      <a href="#policy-04" class="policy-item"><span class="p-num">04</span><span>سياسة وكيل الشحن</span></a>
+      <a href="#policy-05" class="policy-item"><span class="p-num">05</span><span>قواعد تسوية مكافآت الشحن</span></a>
+      <a href="#policy-06" class="policy-item"><span class="p-num">06</span><span>سياسة الداعمين الجدد</span></a>
+      <a href="#policy-07" class="policy-item"><span class="p-num">07</span><span>مكافآت إيراد الغرفة الأسبوعي</span></a>
+      <a href="#policy-08" class="policy-item"><span class="p-num">08</span><span>مهام نقاط الماس</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="policy-01">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">🎙️</span> سياسة المضيفين</h2><span class="badge-num">01</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">حقق مستويات نقاط الماس للحصول على راتب المضيف واسترداد 100% من نقاط الماس.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>راتب المضيف</th><th>النسبة %</th><th>نقاط الماس المطلوبة</th><th>VIP</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>10</td><td>100%</td><td>2,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>2</td><td>20</td><td>100%</td><td>4,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>3</td><td>30</td><td>100%</td><td>6,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>4</td><td>50</td><td>100%</td><td>10,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>5</td><td>70</td><td>100%</td><td>14,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>6</td><td>100</td><td>100%</td><td>20,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>7</td><td>130</td><td>100%</td><td>26,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>8</td><td>200</td><td>100%</td><td>40,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>9</td><td>300</td><td>100%</td><td>60,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>10</td><td>1000</td><td>100%</td><td>200,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>11</td><td>3000</td><td>100%</td><td>600,000,000</td><td>عرض في النظام</td></tr>
+          <tr><td>12</td><td>6000</td><td>100%</td><td>1,200,000,000</td><td>عرض في النظام</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="policy-02">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">👑</span> سياسة قائد الوكالة</h2><span class="badge-num">02</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">كلما زاد دخل الماس للوكالة ارتفعت نسبة العمولة وتقييم الوكالة.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>دخل ماس الوكالة</th><th>النسبة %</th><th>تقييم الوكالة</th><th>VIP</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>1,000,000</td><td>18%</td><td><span class="rank-badge rank-b">B</span></td><td>عرض في النظام</td></tr>
+          <tr><td>2</td><td>2,000,000</td><td>18%</td><td><span class="rank-badge rank-b">B</span></td><td>عرض في النظام</td></tr>
+          <tr><td>3</td><td>3,000,000</td><td>18%</td><td><span class="rank-badge rank-b">B</span></td><td>عرض في النظام</td></tr>
+          <tr><td>4</td><td>5,000,000</td><td>19%</td><td><span class="rank-badge rank-a">A</span></td><td>عرض في النظام</td></tr>
+          <tr><td>5</td><td>7,000,000</td><td>19%</td><td><span class="rank-badge rank-a">A</span></td><td>عرض في النظام</td></tr>
+          <tr><td>6</td><td>10,000,000</td><td>19%</td><td><span class="rank-badge rank-a">A</span></td><td>عرض في النظام</td></tr>
+          <tr><td>7</td><td>13,000,000</td><td>20%</td><td><span class="rank-badge rank-s">S</span></td><td>عرض في النظام</td></tr>
+          <tr><td>8</td><td>20,000,000</td><td>20%</td><td><span class="rank-badge rank-s">S</span></td><td>عرض في النظام</td></tr>
+          <tr><td>9</td><td>30,000,000</td><td>20%</td><td><span class="rank-badge rank-s">S</span></td><td>عرض في النظام</td></tr>
+          <tr><td>10</td><td>100,000,000</td><td>20%</td><td><span class="rank-badge rank-s">S</span></td><td>عرض في النظام</td></tr>
+          <tr><td>11</td><td>300,000,000</td><td>22%</td><td><span class="rank-badge rank-ss">SS</span></td><td>عرض في النظام</td></tr>
+          <tr><td>12</td><td>600,000,000</td><td>22%</td><td><span class="rank-badge rank-ss">SS</span></td><td>عرض في النظام</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes">
+      <div class="note-item"><span class="note-num">01</span><p>نسبة قائد الوكالة حسب إجمالي الهدايا التي استلمها جميع المضيفين في الوكالة.</p></div>
+      <div class="note-item"><span class="note-num">02</span><p>تُصرف الأرباح إلى حساب قائد الوكالة كل يوم اثنين.</p></div>
+      <div class="note-item"><span class="note-num">03</span><p>إذا كان إجمالي راتب الوكالة الأسبوعي أقل من الحد a، تُحسب العمولة بنسبة 17%.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="policy-03">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">🎉</span> حفل افتتاح الوكالة</h2><span class="badge-num">03</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">الوكالات الجديدة التي تستوفي شروط الافتتاح يمكنها المطالبة بالمكافأة A و B (مع مكافآت VIP).</p>
+    <h4 class="sub-title">مكافأة A · إيراد الحدث + مضيفون نشطون</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>إيراد الحدث</th><th>مضيفون نشطون</th><th>عملات</th><th>مكافأة VIP</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>10,000,000</td><td>10</td><td>1,000,000</td><td>VIP2*7</td></tr>
+          <tr><td>2</td><td>15,000,000</td><td>10</td><td>3,300,000</td><td>VIP3*7</td></tr>
+          <tr><td>3</td><td>25,000,000</td><td>15</td><td>6,250,000</td><td>VIP4*7</td></tr>
+          <tr><td>4</td><td>50,000,000</td><td>15</td><td>13,000,000</td><td>VIP5*7</td></tr>
+          <tr><td>5</td><td>100,000,000</td><td>20</td><td>30,000,000</td><td>VIP5*15</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h4 class="sub-title">مكافأة B · راتب الشهر الأول</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>الراتب الشهري</th><th>مكافأة العملات</th><th>مجموع A+B</th><th>مكافأة VIP</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>500</td><td>1,000,000</td><td>2,000,000</td><td>VIP2*7</td></tr>
+          <tr><td>2</td><td>1000</td><td>1,500,000</td><td>4,800,000</td><td>VIP3*7</td></tr>
+          <tr><td>3</td><td>2000</td><td>2,500,000</td><td>8,750,000</td><td>VIP4*7</td></tr>
+          <tr><td>4</td><td>3000</td><td>5,000,000</td><td>23,000,000</td><td>VIP5*7</td></tr>
+          <tr><td>5</td><td>5000</td><td>10,000,000</td><td>40,000,000</td><td>VIP5*15</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes">
+      <div class="note-item"><span class="note-num">A</span><p>يجب على الوكالات الجديدة إقامة حفل الافتتاح والتقديم خلال 7 أيام من رفع البانر؛ التأخر لاغٍ. يجب استيفاء دخل الماس وعدد المضيفين النشطين.</p></div>
+      <div class="note-item"><span class="note-num">B</span><p>بعد استيفاء راتب الشهر الأول، قدّم الطلب للدعم الرسمي قبل اليوم 10 من الشهر التالي؛ التأخر يمنع الاستلام.</p></div>
+    </div>
+    <div class="gold-banner">تعليمات الافتتاح: بانر 742×160 مع معرف قائد الوكالة والتاريخ؛ أرسله للمجموعة قبل 1-2 يومًا؛ 10 مضيفين على الأقل؛ البيانات: 7 أيام؛ الحفل خلال 1-2 أسابيع من التفعيل.</div>
+  </div>
+</section>
+
+<section class="section" id="policy-04">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">💎</span> سياسة وكيل الشحن</h2><span class="badge-num">04</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">استرداد فوري لكل شحنة، أو نسب أعلى للشحن التراكمي نصف الشهري (بالدولار).</p>
+    <h4 class="sub-title">A · شحنة واحدة</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>شحن ($)</th><th>نسبة المكافأة</th><th>مبلغ المكافأة</th><th>إجمالي العملات</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>200</td><td>16%</td><td>3,200,000</td><td>23,200,000</td></tr>
+          <tr><td>3</td><td>500</td><td>18%</td><td>9,000,000</td><td>59,000,000</td></tr>
+          <tr><td>4</td><td>1000</td><td>20%</td><td>20,000,000</td><td>120,000,000</td></tr>
+          <tr><td>5</td><td>2000</td><td>20%</td><td>40,000,000</td><td>240,000,000</td></tr>
+          <tr><td>6</td><td>3000</td><td>25%</td><td>75,000,000</td><td>375,000,000</td></tr>
+          <tr><td>7</td><td>5000</td><td>26%</td><td>130,000,000</td><td>630,000,000</td></tr>
+          <tr><td>8</td><td>10000</td><td>30%</td><td>300,000,000</td><td>1,300,000,000</td></tr>
+          <tr><td>9</td><td>30000</td><td>32%</td><td>960,000,000</td><td>3,960,000,000</td></tr>
+          <tr><td>10</td><td>50000</td><td>36%</td><td>1,800,000,000</td><td>6,800,000,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h4 class="sub-title">B · تراكمي نصف شهري</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>شحن ($)</th><th>نسبة المكافأة</th><th>مبلغ المكافأة</th><th>إجمالي العملات</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>500</td><td>18%</td><td>9,000,000</td><td>59,000,000</td></tr>
+          <tr><td>4</td><td>1000</td><td>19%</td><td>19,000,000</td><td>119,000,000</td></tr>
+          <tr><td>5</td><td>2000</td><td>20%</td><td>40,000,000</td><td>240,000,000</td></tr>
+          <tr><td>6</td><td>3000</td><td>24%</td><td>72,000,000</td><td>372,000,000</td></tr>
+          <tr><td>7</td><td>5000</td><td>26%</td><td>130,000,000</td><td>630,000,000</td></tr>
+          <tr><td>8</td><td>10000</td><td>28%</td><td>280,000,000</td><td>1,280,000,000</td></tr>
+          <tr><td>9</td><td>50000</td><td>29%</td><td>1,450,000,000</td><td>6,450,000,000</td></tr>
+          <tr><td>10</td><td>100000</td><td>36%</td><td>3,600,000,000</td><td>13,600,000,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="policy-05">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">📋</span> قواعد تسوية مكافآت الشحن</h2><span class="badge-num">05</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">اختر الخطة A أو B بحرية؛ التبديل خلال الشهر. الخطة B تُصرف في 1-3 من الشهر التالي.</p>
+    <div class="info-grid" style="margin-bottom:20px;">
+      <div class="info-box"><h4>الخطة A · فوري</h4><p>بعد وصول الشحنة، تُصرف كل مكافآت العملات دفعة واحدة. هذه المكافأة لا تُحسب ضمن الشحن التراكمي الشهري.</p></div>
+      <div class="info-box"><h4>الخطة B · تراكم شهري</h4><p>يُجمع كل الشحن في الشهر؛ تُحسب مكافآت العملات الكبيرة وتُصرف في 1-3 من الشهر التالي.</p></div>
+    </div>
+    <div class="notes">
+      <div class="note-item"><span class="note-num">01</span><p>المنصة تدعم الخطة A و B؛ يختار المستخدم أحدهما.</p></div>
+      <div class="note-item"><span class="note-num">02</span><p>مكافأة كل شحنة تُسوّى مرة واحدة فقط دون تكرار.</p></div>
+      <div class="note-item"><span class="note-num">03</span><p>التسوية تتبع بدقة الخطة (A أو B) التي اختارها المستخدم.</p></div>
+      <div class="note-item"><span class="note-num">04</span><p>يمكن التبديل بين A و B في أي وقت خلال الشهر.</p></div>
+    </div>
+    <div class="gold-banner">جميع مبالغ الشحن والمكافآت بالدولار الأمريكي.</div>
+    <div class="gold-banner">صرف الرواتب يتبع الخطة B.</div>
+  </div>
+</section>
+
+<section class="section" id="policy-06">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">🌟</span> سياسة الداعمين الجدد</h2><span class="badge-num">06</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">أول شحن في اليوم الأول: استرداد عملات، VIP نبيل، ورقم مميز (30 يومًا) — قنوات الشحن عبر الإنترنت فقط.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>أول شحن</th><th>نسبة المكافأة</th><th>مكافأة العملات</th><th>VIP نبيل</th><th>رقم مميز (30 يومًا)</th></tr></thead>
+        <tbody>
+          <tr><td>$30 / $50 / $100</td><td>—</td><td>—</td><td>x</td><td>—</td></tr>
+          <tr><td>$200</td><td>—</td><td>—</td><td>x</td><td>ABC CAB</td></tr>
+          <tr><td>$300</td><td>—</td><td>—</td><td>x</td><td>ABC DBB</td></tr>
+          <tr><td>$500</td><td>5%</td><td>2,500,000</td><td>x</td><td>AAB BC</td></tr>
+          <tr><td>$1,000</td><td>7%</td><td>7,000,000</td><td>x</td><td>AAA BB</td></tr>
+          <tr><td>$3,000</td><td>8%</td><td>24,000,000</td><td>x</td><td>AAA AB</td></tr>
+          <tr><td>$5,000</td><td>9%</td><td>45,000,000</td><td>x</td><td>AAAA A</td></tr>
+          <tr><td>$10,000</td><td>10%</td><td>100,000,000</td><td>x</td><td>AAAA</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notes">
+      <div class="note-item"><span class="note-num">01</span><p>وكلاء الشحن مستثنون؛ لا يُحسب شحن قنوات الوكيل — فقط Apple و Google وروابط الشحن.</p></div>
+      <div class="note-item"><span class="note-num">02</span><p>مكافآت أول شحن يمكن تجميعها خلال اليوم الأول.</p></div>
+      <div class="note-item"><span class="note-num">03</span><p>تواصل مع الدعم الرسمي لمركبة وإطار مخصصين عند شحن +3000$ في يوم واحد.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="policy-07">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">🏠</span> مكافآت إيراد الغرفة الأسبوعي</h2><span class="badge-num">07</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">عند تحقيق إيراد أسبوعي يتقاسم مالك الغرفة وأفضل 10 داعمين العملات.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>إيراد الغرفة الأسبوعي</th><th>مكافأة المالك الأسبوعية</th><th>مكافأة الداعم (أفضل 10)</th><th>ملاحظة</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>20,000,000</td><td>200,000</td><td>400,000</td><td>200</td></tr>
+          <tr><td>2</td><td>40,000,000</td><td>400,000</td><td>800,000</td><td>400</td></tr>
+          <tr><td>3</td><td>100,000,000</td><td>1,000,000</td><td>2,000,000</td><td>1,000</td></tr>
+          <tr><td>4</td><td>220,000,000</td><td>2,200,000</td><td>4,400,000</td><td>2,200</td></tr>
+          <tr><td>5</td><td>350,000,000</td><td>3,500,000</td><td>7,000,000</td><td>3,500</td></tr>
+          <tr><td>6</td><td>500,000,000</td><td>5,000,000</td><td>10,000,000</td><td>5,000</td></tr>
+          <tr><td>7</td><td>700,000,000</td><td>7,000,000</td><td>14,000,000</td><td>7,000</td></tr>
+          <tr><td>8</td><td>1,300,000,000</td><td>13,000,000</td><td>26,000,000</td><td>13,000</td></tr>
+          <tr><td>9</td><td>1,600,000,000</td><td>16,000,000</td><td>32,000,000</td><td>16,000</td></tr>
+          <tr><td>10</td><td>2,000,000,000</td><td>20,000,000</td><td>40,000,000</td><td>20,000</td></tr>
+          <tr><td>11</td><td>2,400,000,000</td><td>24,000,000</td><td>48,000,000</td><td>24,000</td></tr>
+          <tr><td>12</td><td>2,900,000,000</td><td>29,000,000</td><td>58,000,000</td><td>29,000</td></tr>
+          <tr><td>13</td><td>3,500,000,000</td><td>35,000,000</td><td>70,000,000</td><td>35,000</td></tr>
+          <tr><td>14</td><td>4,300,000,000</td><td>43,000,000</td><td>86,000,000</td><td>43,000</td></tr>
+          <tr><td>15</td><td>5,500,000,000</td><td>55,000,000</td><td>110,000,000</td><td>55,000</td></tr>
+          <tr><td>17-16</td><td>7,500,000,000</td><td>75,000,000</td><td>150,000,000</td><td>75,000</td></tr>
+          <tr><td>18</td><td>10,000,000,000</td><td>100,000,000</td><td>200,000,000</td><td>100,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="policy-08">
+  <div class="card animate-in">
+    <div class="policy-header"><h2><span class="icon">✨</span> مهام نقاط الماس</h2><span class="badge-num">08</span></div>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">استلام يدوي في اليوم التالي؛ إعادة التعيين كل اثنين 00:01 بتوقيت السعودية.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>م</th><th>نقاط الماس</th><th>مكافأة المضيف</th><th>VIP</th><th>ملاحظة</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>300,000</td><td>9,000</td><td>x</td><td>عرض في النظام</td></tr>
+          <tr><td>2</td><td>500,000</td><td>12,000</td><td>x</td><td>عرض في النظام</td></tr>
+          <tr><td>3</td><td>800,000</td><td>12,000</td><td>x</td><td>عرض في النظام</td></tr>
+          <tr><td>4</td><td>1,000,000</td><td>10,000</td><td>x</td><td>عرض في النظام</td></tr>
+          <tr><td>5</td><td>3,000,000</td><td>45,000</td><td>x</td><td>عرض في النظام</td></tr>
+          <tr><td>6</td><td>5,000,000</td><td>75,000</td><td>x</td><td>عرض في النظام</td></tr>
+          <tr><td>7</td><td>8,000,000</td><td>80,000</td><td>x</td><td>عرض في النظام</td></tr>
+          <tr><td>8</td><td>15,000,000</td><td>150,000</td><td>x</td><td>عرض في النظام</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gold-banner">أهداف المهام تراكمية؛ الاستلام في اليوم التالي. يجب على المضيف الضغط للاستلام يدوياً؛ تُعاد الحالة كل اثنين 00:01 بتوقيت السعودية.</div>
+  </div>
+</section>
+
+<section class="footer">
+  <div class="footer-logo">🐯</div>
+  <h3>أنت الحصان الأسود القادم. اصعد المايك وتألق.</h3>
+  <div class="footer-links">
+    <a href="#" class="btn btn-outline" style="padding:10px 24px; font-size:0.9rem;">App Store</a>
+    <a href="#" class="btn btn-outline" style="padding:10px 24px; font-size:0.9rem;">Google Play</a>
+  </div>
+  <p style="margin-top:24px;">التفسير النهائي يعود لـ Bulala Chat الرسمي · السياسات تتبع أحدث إعلانات المنصة.<br>صفحة دعم برنامج دعم Bulala Chat</p>
+</section>
+
+<div class="back-to-top" id="backToTop" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">↑</div>
+
+<script>
+// Intersection Observer for animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-in').forEach(el => {
+  el.style.animationPlayState = 'paused';
+  observer.observe(el);
+});
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+</script>
+</body>
+</html>
